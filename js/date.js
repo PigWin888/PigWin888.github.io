@@ -9,15 +9,16 @@ const startBtn = document.querySelector('button')
 const speedSelect = document.querySelector('#speed')
 const numTurnSelect = document.querySelector('#numTurn')
 const piginput = document.querySelector('#piginput')
+const vipcode = document.querySelector('.vipcode')
 ace = document.querySelector('#get')
 hero = document.querySelector('#push')
 san = document.querySelector('#san')
 msg = document.querySelector('#msg')
 
 const vipSanList = [
-    { 'value': 8888, 'str': 'PigWin888' },
-    { 'value': 88888, 'str': 'PigWinVip888' },
-    { 'value': 888888, 'str': 'PigWinVVip888' },
+    { 'id': 1, 'value': 8888, 'str': 'PigWin888' },
+    { 'id': 2, 'value': 88888, 'str': 'PigWinVip888' },
+    { 'id': 3, 'value': 888888, 'str': 'PigWinVVip888' },
 ]
 bricks = Array.from(bricks).sort((a, b) => {
     return a.getAttributeNode('box-id').value - b.getAttributeNode('box-id').value
@@ -54,8 +55,8 @@ bricks.forEach((box, index) => {
     i.setAttribute('id', index)
     box.appendChild(i)
 })
-let bi = document.querySelectorAll('.bi')
+
+let bi = document.querySelectorAll('.iHight')
 bi = Array.from(bi).sort((a, b) => {
     return a.getAttributeNode('id').value - b.getAttributeNode('id').value
 })
-// numeral(number).format('$0,0');

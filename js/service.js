@@ -3,6 +3,7 @@ window.onload = function () {
     san.innerText = numeral(defSan).format('$0,0')
     hero.innerText = numeral(defHero).format('$0,0')
     ace.innerText = numeral(defAce).format('$0,0')
+    createVipCode(vipSanList, vipcode)
 }
 document.getElementById("pushHero").addEventListener("click", function () {
     if (defSan > 0) {
@@ -124,4 +125,16 @@ function allBtnClose() {
     removeHero.disabled = true
     piginput.disabled = true
     ace.innerText = numeral(0).format('$0,0')
+}
+function createVipCode(array, box) {
+    array.forEach(code => {
+        let btn = document.createElement('a')
+        btn.innerText = `輸入 ${code.str} 獲得 ${numeral(code.value).format('$0,0')}`
+        btn.classList.add('list-group-item', 'list-group-item-action')
+        btn.setAttribute('target','_blank')
+        btn.setAttribute('href','https://twitter.com/Mutsuma99')
+        btn.setAttribute('id', 'vipcodebtn')
+        // console.log(btn)
+        box.appendChild(btn)
+    });
 }
