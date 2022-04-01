@@ -57,6 +57,7 @@ function turnAroundSpeedCtrl() {
     if (currentIndex >= bi.length) currentIndex = 0
     bi[currentIndex].classList.add('active')
     steps--
+    coin.play()
     if (steps > 0) {
         setTimeout(turnAroundSpeedCtrl, speed)
         if (steps < Math.floor((allSteps / 3))) speed += 7
@@ -131,8 +132,8 @@ function createVipCode(array, box) {
         let btn = document.createElement('a')
         btn.innerText = `輸入 ${code.str} 獲得 ${numeral(code.value).format('$0,0')}`
         btn.classList.add('list-group-item', 'list-group-item-action')
-        btn.setAttribute('target','_blank')
-        btn.setAttribute('href','https://twitter.com/Mutsuma99')
+        btn.setAttribute('target', '_blank')
+        btn.setAttribute('href', 'https://twitter.com/Mutsuma99')
         btn.setAttribute('id', 'vipcodebtn')
         // console.log(btn)
         box.appendChild(btn)
