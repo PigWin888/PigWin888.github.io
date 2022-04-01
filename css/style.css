@@ -1,0 +1,75 @@
+.txani {
+  color: red;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.txani.active {
+  color: royalblue;
+  font-size: calc(2rem + 2vw) !important;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.iHight {
+  font-size: 3rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.iHight.active {
+  font-size: 5rem;
+  color: red;
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+
+.spantxst {
+  font-size: 1.3rem;
+}
+
+[box-id] {
+  height: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+[box-id].active {
+  -webkit-box-shadow: 0 0 20px red;
+          box-shadow: 0 0 20px red;
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+
+#san {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
+#msg {
+  font-size: 1.5rem;
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */

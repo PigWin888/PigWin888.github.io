@@ -1,0 +1,58 @@
+.txani {
+    color: red;
+    transition: 0.3s;
+}
+
+.txani.active {
+    color: royalblue;
+    font-size: calc(2rem + 2vw) !important;
+    transition: 0.3s;
+}
+
+.iHight {
+    font-size: 3rem;
+    transition: 0.3s;
+}
+.iHight.active {
+    // box-shadow: 0 0 20px red;
+    font-size: 5rem;
+    color: red;
+    transition: 0s;
+}
+
+.spantxst {
+    font-size: 1.3rem;
+}
+
+[box-id] {
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    transition: 0.3s;
+}
+
+[box-id].active {
+    box-shadow: 0 0 20px red;
+    transition: 0s;
+}
+
+#san {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.red {
+    background-color: red;
+}
+.blue {
+    background-color: blue;
+}
+.green {
+    background-color: green;
+}
+#msg {
+    font-size: 1.5rem;
+    text-align: center;
+}
