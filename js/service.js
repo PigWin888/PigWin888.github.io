@@ -19,7 +19,7 @@ document.getElementById("pushHero").addEventListener("click", function () {
     checkDrawInput()
 })
 document.getElementById("removeHero").addEventListener("click", function () {
-    if (defHero > 0 && defSan + drawNum <= 0) {
+    if (defHero > 0) {
         defHero = defHero - 100
         defSan = defSan + 100
         hero.innerText = numeral(defHero).format('$0,0')
@@ -35,7 +35,6 @@ document.getElementById("pigbtn").addEventListener("click", function () {
     if (_input != '') {
         vipSanList.forEach(e => {
             if (_input == e.str.toUpperCase()) {
-                console.log(e.str)
                 defSan = defSan + e.value
                 san.innerText = numeral(defSan).format('$0,0')
                 piginput.value = ''
@@ -57,7 +56,7 @@ drawBtn.onclick = function () {
     checkDrawInput()
 }
 drawInput.addEventListener('input', function () {
-    checkDrawInput()
+    checkDraw()
 })
 speedSelect.addEventListener('change', function () {
     saveSetting()
@@ -185,10 +184,17 @@ function createVipCode(array, box) {
         box.appendChild(btn)
     });
 }
-function checkDrawInput() {
+function checkDraw() {
     if (drawInput.value >= defSan) {
         drawInput.value = defSan
     } else if (drawInput.value <= 0) {
+        drawInput.value = 1
+    }
+    drawNum = parseInt(drawInput.value)
+}
+function checkDrawInput() {
+    drawInput.value = defSan
+    if (drawInput.value <= 0) {
         drawInput.value = 1
     }
     drawNum = parseInt(drawInput.value)
