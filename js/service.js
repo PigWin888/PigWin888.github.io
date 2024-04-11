@@ -15,9 +15,10 @@ document.getElementById("pushHero").addEventListener("click", function () {
     if (defHero > 0) {
         startBtn.disabled = false
     }
+    checkDrawInput()
 })
 drawBtn.onclick = function () {
-    if (defSan > 0) {
+    if (defSan > 0 && defSan - drawNum >= 0) {
         defHero += drawNum
         defSan -= drawNum
         hero.innerText = numeral(defHero).format('$0,0')
@@ -26,17 +27,21 @@ drawBtn.onclick = function () {
     if (defHero > 0) {
         startBtn.disabled = false
     }
+    checkDrawInput()
 }
 drawInput.addEventListener('input', function () {
+    checkDrawInput()
+})
+function checkDrawInput() {
     if (drawInput.value >= defSan) {
         drawInput.value = defSan
     } else if (drawInput.value <= 0) {
         drawInput.value = 1
     }
     drawNum = parseInt(drawInput.value)
-})
+}
 document.getElementById("removeHero").addEventListener("click", function () {
-    if (defHero > 0) {
+    if (defHero > 0 && defSan + drawNum <= 0) {
         defHero = defHero - 100
         defSan = defSan + 100
         hero.innerText = numeral(defHero).format('$0,0')
@@ -45,6 +50,7 @@ document.getElementById("removeHero").addEventListener("click", function () {
     if (defHero <= 0) {
         startBtn.disabled = true
     }
+    checkDrawInput()
 })
 document.getElementById("pigbtn").addEventListener("click", function () {
     _input = piginput.value.toUpperCase()
