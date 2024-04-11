@@ -16,6 +16,25 @@ document.getElementById("pushHero").addEventListener("click", function () {
         startBtn.disabled = false
     }
 })
+drawBtn.onclick = function () {
+    if (defSan > 0) {
+        defHero += drawNum
+        defSan -= drawNum
+        hero.innerText = numeral(defHero).format('$0,0')
+        san.innerText = numeral(defSan).format('$0,0')
+    }
+    if (defHero > 0) {
+        startBtn.disabled = false
+    }
+}
+drawInput.addEventListener('input', function () {
+    if (drawInput.value >= defSan) {
+        drawInput.value = defSan
+    } else if (drawInput.value <= 0) {
+        drawInput.value = 1
+    }
+    drawNum = parseInt(drawInput.value)
+})
 document.getElementById("removeHero").addEventListener("click", function () {
     if (defHero > 0) {
         defHero = defHero - 100
@@ -54,7 +73,7 @@ startBtn.onclick = function () {
 saveBtn.onclick = function () {
     let _speedSelect = speedSelect.value
     let _numTurnSelect = numTurnSelect.value
-    let saveJson = { _speedSelect, _numTurnSelect, defSan, defAce, defHero }
+    let saveJson = { _speedSelect, _numTurnSelect, defSan, defAce, defHero, drawNum }
     localStorage.setItem(localKey, JSON.stringify(saveJson));
 }
 loadBtn.onclick = function () {
@@ -65,9 +84,11 @@ loadBtn.onclick = function () {
         defSan = loadJson.defSan
         defAce = loadJson.defAce
         defHero = loadJson.defHero
+        drawNum = loadJson.drawNum
         ace.innerText = aceCheck(defAce)
         san.innerText = numeral(defSan).format('$0,0')
         hero.innerText = numeral(defHero).format('$0,0')
+        drawInput.value = drawNum
     }
 }
 function turnAroundSpeedCtrl() {
@@ -122,9 +143,11 @@ function checkSan() {
     if (defSan > 0) {
         pushHero.disabled = false
         removeHero.disabled = false
+        drawBtn.disabled = false
     } else {
         pushHero.disabled = true
         removeHero.disabled = true
+        drawBtn.disabled = true
     }
 }
 function allBtnOpen() {
@@ -134,6 +157,8 @@ function allBtnOpen() {
     pushHero.disabled = false
     removeHero.disabled = false
     piginput.disabled = false
+    drawBtn.disabled = false
+    drawInput.disabled = false
     checkSan()
 }
 function allBtnClose() {
@@ -144,6 +169,8 @@ function allBtnClose() {
     pushHero.disabled = true
     removeHero.disabled = true
     piginput.disabled = true
+    drawBtn.disabled = true
+    drawInput.disabled = true
     ace.innerText = numeral(0).format('$0,0')
 }
 function createVipCode(array, box) {
@@ -156,10 +183,4 @@ function createVipCode(array, box) {
         btn.setAttribute('id', 'vipcodebtn')
         box.appendChild(btn)
     });
-}
-function save() {
-
-}
-function load() {
-
 }
