@@ -51,6 +51,25 @@ startBtn.onclick = function () {
     allSteps = steps
     turnAroundSpeedCtrl()
 }
+saveBtn.onclick = function () {
+    let _speedSelect = speedSelect.value
+    let _numTurnSelect = numTurnSelect.value
+    let saveJson = { _speedSelect, _numTurnSelect, defSan, defAce, defHero }
+    localStorage.setItem(localKey, JSON.stringify(saveJson));
+}
+loadBtn.onclick = function () {
+    if (localStorage.getItem(localKey)) {
+        let loadJson = JSON.parse(localStorage.getItem(localKey));
+        speedSelect.value = loadJson._speedSelect
+        numTurnSelect.value = loadJson._numTurnSelect
+        defSan = loadJson.defSan
+        defAce = loadJson.defAce
+        defHero = loadJson.defHero
+        ace.innerText = aceCheck(defAce)
+        san.innerText = numeral(defSan).format('$0,0')
+        hero.innerText = numeral(defHero).format('$0,0')
+    }
+}
 function turnAroundSpeedCtrl() {
     bi[currentIndex].classList.remove('active')
     currentIndex++
@@ -133,9 +152,14 @@ function createVipCode(array, box) {
         btn.innerText = `輸入 ${code.str} 獲得 ${numeral(code.value).format('$0,0')}`
         btn.classList.add('list-group-item', 'list-group-item-action')
         btn.setAttribute('target', '_blank')
-        btn.setAttribute('href', 'https://twitter.com/Mutsuma99')
+        btn.setAttribute('href', 'https://twitter.com/peachpiggy8917')
         btn.setAttribute('id', 'vipcodebtn')
-        // console.log(btn)
         box.appendChild(btn)
     });
+}
+function save() {
+
+}
+function load() {
+
 }

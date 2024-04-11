@@ -2,14 +2,17 @@ let steps = 0, allSteps = 0, currentIndex = 0, speed = 0, numTurn = 0, ace, hero
 
 const vipSan = 88888
 const vipString = 'PigWinVip888'
+const localKey = 'PINGWINVIP'
 let defSan = 1000
 let defAce = 0, defHero = 0
 let pushHero = document.querySelector('#pushHero'), removeHero = document.querySelector('#removeHero')
-const startBtn = document.querySelector('button')
+const startBtn = document.querySelector('#start')
 const speedSelect = document.querySelector('#speed')
 const numTurnSelect = document.querySelector('#numTurn')
 const piginput = document.querySelector('#piginput')
 const vipcode = document.querySelector('.vipcode')
+const saveBtn = document.querySelector('#saveBtn')
+const loadBtn = document.querySelector('#loadBtn')
 ace = document.querySelector('#get')
 hero = document.querySelector('#push')
 san = document.querySelector('#san')
