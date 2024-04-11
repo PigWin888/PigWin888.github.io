@@ -4,6 +4,7 @@ window.onload = function () {
     hero.innerText = numeral(defHero).format('$0,0')
     ace.innerText = numeral(defAce).format('$0,0')
     createVipCode(vipSanList, vipcode)
+    loadSetting()
 }
 document.getElementById("pushHero").addEventListener("click", function () {
     if (defSan > 0) {
@@ -17,29 +18,6 @@ document.getElementById("pushHero").addEventListener("click", function () {
     }
     checkDrawInput()
 })
-drawBtn.onclick = function () {
-    if (defSan > 0 && defSan - drawNum >= 0) {
-        defHero += drawNum
-        defSan -= drawNum
-        hero.innerText = numeral(defHero).format('$0,0')
-        san.innerText = numeral(defSan).format('$0,0')
-    }
-    if (defHero > 0) {
-        startBtn.disabled = false
-    }
-    checkDrawInput()
-}
-drawInput.addEventListener('input', function () {
-    checkDrawInput()
-})
-function checkDrawInput() {
-    if (drawInput.value >= defSan) {
-        drawInput.value = defSan
-    } else if (drawInput.value <= 0) {
-        drawInput.value = 1
-    }
-    drawNum = parseInt(drawInput.value)
-}
 document.getElementById("removeHero").addEventListener("click", function () {
     if (defHero > 0 && defSan + drawNum <= 0) {
         defHero = defHero - 100
@@ -66,6 +44,27 @@ document.getElementById("pigbtn").addEventListener("click", function () {
         });
     }
 })
+drawBtn.onclick = function () {
+    if (defSan > 0 && defSan - drawNum >= 0) {
+        defHero += drawNum
+        defSan -= drawNum
+        hero.innerText = numeral(defHero).format('$0,0')
+        san.innerText = numeral(defSan).format('$0,0')
+    }
+    if (defHero > 0) {
+        startBtn.disabled = false
+    }
+    checkDrawInput()
+}
+drawInput.addEventListener('input', function () {
+    checkDrawInput()
+})
+speedSelect.addEventListener('change', function () {
+    saveSetting()
+})
+numTurnSelect.addEventListener('change', function () {
+    saveSetting()
+})
 startBtn.onclick = function () {
     msg.innerText = ''
     speed = parseInt(speedSelect.value)
@@ -77,16 +76,12 @@ startBtn.onclick = function () {
     turnAroundSpeedCtrl()
 }
 saveBtn.onclick = function () {
-    let _speedSelect = speedSelect.value
-    let _numTurnSelect = numTurnSelect.value
-    let saveJson = { _speedSelect, _numTurnSelect, defSan, defAce, defHero, drawNum }
+    let saveJson = { defSan, defAce, defHero, drawNum }
     localStorage.setItem(localKey, JSON.stringify(saveJson));
 }
 loadBtn.onclick = function () {
     if (localStorage.getItem(localKey)) {
         let loadJson = JSON.parse(localStorage.getItem(localKey));
-        speedSelect.value = loadJson._speedSelect
-        numTurnSelect.value = loadJson._numTurnSelect
         defSan = loadJson.defSan
         defAce = loadJson.defAce
         defHero = loadJson.defHero
@@ -189,4 +184,25 @@ function createVipCode(array, box) {
         btn.setAttribute('id', 'vipcodebtn')
         box.appendChild(btn)
     });
+}
+function checkDrawInput() {
+    if (drawInput.value >= defSan) {
+        drawInput.value = defSan
+    } else if (drawInput.value <= 0) {
+        drawInput.value = 1
+    }
+    drawNum = parseInt(drawInput.value)
+}
+function saveSetting() {
+    let _speedSelect = speedSelect.value
+    let _numTurnSelect = numTurnSelect.value
+    let saveSettingJson = { _speedSelect, _numTurnSelect }
+    localStorage.setItem(localSettingKey, JSON.stringify(saveSettingJson))
+}
+function loadSetting() {
+    if (localStorage.getItem(localSettingKey)) {
+        let loadJson = JSON.parse(localStorage.getItem(localSettingKey));
+        speedSelect.value = loadJson._speedSelect
+        numTurnSelect.value = loadJson._numTurnSelect
+    }
 }

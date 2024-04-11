@@ -3,6 +3,7 @@ let steps = 0, allSteps = 0, currentIndex = 0, speed = 0, numTurn = 0, ace, hero
 const vipSan = 88888
 const vipString = 'PigWinVip888'
 const localKey = 'PINGWINVIP'
+const localSettingKey = 'PINGWINVIPSETTING'
 let defSan = 1000
 let defAce = 0, defHero = 0, drawNum = 1
 // let pushHero = document.querySelector('#pushHero'), removeHero = document.querySelector('#removeHero')
