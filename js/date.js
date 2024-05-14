@@ -5,7 +5,7 @@ const vipString = 'PigWinVip888'
 const localKey = 'PINGWINVIP'
 const localSettingKey = 'PINGWINVIPSETTING'
 let defSan = 1000
-let defAce = 0, defHero = 0, drawNum = 1
+let defAce = 0, defHero = 0, drawNum = 0
 // let pushHero = document.querySelector('#pushHero'), removeHero = document.querySelector('#removeHero')
 const startBtn = document.querySelector('#start')
 const speedSelect = document.querySelector('#speed')

@@ -3,6 +3,8 @@ window.onload = function () {
     san.innerText = numeral(defSan).format('$0,0')
     hero.innerText = numeral(defHero).format('$0,0')
     ace.innerText = numeral(defAce).format('$0,0')
+    drawInput.value = defSan
+    drawNum = defSan
     createVipCode(vipSanList, vipcode)
     loadSetting()
 }
@@ -125,6 +127,7 @@ function getSan() {
         defSan = defSan + defAce
         ace.innerText = numeral(defAce).format('$0,0')
         msg.innerText = '您贏了！'
+        win.play()
     }
     ace.innerText = aceCheck(defAce)
     san.innerText = numeral(defSan).format('$0,0')
@@ -195,7 +198,7 @@ function checkDraw() {
 function checkDrawInput() {
     drawInput.value = defSan
     if (drawInput.value <= 0) {
-        drawInput.value = 1
+        drawInput.value = 0
     }
     drawNum = parseInt(drawInput.value)
 }
