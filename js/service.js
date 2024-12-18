@@ -76,23 +76,23 @@ startBtn.onclick = function () {
     allSteps = steps
     turnAroundSpeedCtrl()
 }
-saveBtn.onclick = function () {
-    let saveJson = { defSan, defAce, defHero, drawNum }
-    localStorage.setItem(localKey, JSON.stringify(saveJson));
-}
-loadBtn.onclick = function () {
-    if (localStorage.getItem(localKey)) {
-        let loadJson = JSON.parse(localStorage.getItem(localKey));
-        defSan = loadJson.defSan
-        defAce = loadJson.defAce
-        defHero = loadJson.defHero
-        drawNum = loadJson.drawNum
-        ace.innerText = aceCheck(defAce)
-        san.innerText = numeral(defSan).format('$0,0')
-        hero.innerText = numeral(defHero).format('$0,0')
-        drawInput.value = drawNum
-    }
-}
+// saveBtn.onclick = function () {
+//     let saveJson = { defSan, defAce, defHero, drawNum }
+//     localStorage.setItem(localKey, JSON.stringify(saveJson));
+// }
+// loadBtn.onclick = function () {
+//     if (localStorage.getItem(localKey)) {
+//         let loadJson = JSON.parse(localStorage.getItem(localKey));
+//         defSan = loadJson.defSan
+//         defAce = loadJson.defAce
+//         defHero = loadJson.defHero
+//         drawNum = loadJson.drawNum
+//         ace.innerText = aceCheck(defAce)
+//         san.innerText = numeral(defSan).format('$0,0')
+//         hero.innerText = numeral(defHero).format('$0,0')
+//         drawInput.value = drawNum
+//     }
+// }
 function turnAroundSpeedCtrl() {
     bi[currentIndex].classList.remove('active')
     currentIndex++
@@ -178,13 +178,13 @@ function allBtnClose() {
 }
 function createVipCode(array, box) {
     array.forEach(code => {
-        let btn = document.createElement('a')
-        btn.innerText = `輸入 ${code.str} 獲得 ${numeral(code.value).format('$0,0')}`
-        btn.classList.add('list-group-item', 'list-group-item-action')
-        btn.setAttribute('target', '_blank')
-        btn.setAttribute('href', 'https://twitter.com/peachpiggy8917')
-        btn.setAttribute('id', 'vipcodebtn')
-        box.appendChild(btn)
+        let a = document.createElement('a')
+        a.innerText = `輸入 ${code.str} 獲得 ${numeral(code.value).format('$0,0')}`
+        a.classList.add('list-group-item', 'list-group-item-action')
+        a.setAttribute('target', '_blank')
+        // a.setAttribute('href', 'https://twitter.com/peachpiggy8917')
+        a.setAttribute('id', 'vipcodebtn')
+        box.appendChild(a)
     });
 }
 function checkDraw() {
